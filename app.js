@@ -36,6 +36,8 @@ app.use(require("express-session")({
 // passport.deserializeUser(User.deserializeUser());
 
 app.use("/", indexRoutes);
+app.use("/recipes", recipesRoutes);
+app.use("/recipes/:id/comments", commentRoutes);
 
 app.listen( 3000, process.env.IP, function () {
     console.log( "Recipe has started!" );

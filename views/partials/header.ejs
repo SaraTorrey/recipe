@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Recipe 5.0</title>
@@ -6,16 +6,18 @@
     <link rel="stylesheet" href="/stylesheets/main.css">
 </head>
 <body>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="/">Recipe 5.0</a>
+<nav class="ui three column relaxed divided grid">
+    <div class="ui fixed inverted menu yellow">
+        <div class="ui container">
+            <a class="header item" href="/">Recipe 5.0</a>
         </div>
         <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
+            <ul class="header item">
                 <% if(!currentUser){ %>
-                    <li><a href="/login">Login</a></li>
-                    <li><a href="/register">Sign Up</a></li>
+                    <div class="right menu">
+                        <a href="/blogs/login" class="item">Login</a>
+                        <a href="/blogs/register" class="item">Register</a>
+                    </div>
                 <% } else { %>
                     <li><a href="#">Signed In As <%= currentUser.username %></a></li>
                     <li><a href="/logout">Logout</a></li>
@@ -26,13 +28,13 @@
 </nav>
 
 <% if(error && error.length > 0){%>
-<div class="container">
+<div class="ui container">
     <div class="alert alert-danger" role="alert">
         <%= error %>
     </div>
     <% } %>
     <% if(success && success.length > 0){%>
-        <div class="alert alert-success" role="alert">
+        <div class="button" role="alert">
             <%= success %>
         </div>
     <% } %>

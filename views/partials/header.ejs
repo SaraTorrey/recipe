@@ -6,12 +6,12 @@
     <link rel="stylesheet" href="/stylesheets/main.css">
 </head>
 <body>
-<nav class="ui three column relaxed divided grid">
-    <div class="ui fixed inverted menu yellow">
+
+    <nav class="ui fixed inverted menu yellow">
         <div class="ui container">
             <a class="header item" href="/">Recipe 5.0</a>
         </div>
-        <div class="collapse navbar-collapse">
+        <div class="">
             <ul class="header item">
                 <% if(!currentUser){ %>
                     <div class="right menu">
@@ -24,8 +24,7 @@
                 <% } %>
             </ul>
         </div>
-    </div>
-</nav>
+    </nav>
 
 <% if(error && error.length > 0){%>
 <div class="ui container">

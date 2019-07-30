@@ -2,6 +2,35 @@
 
 <div class="ui main text container segment">
     <div class="ui huge header">
-        New Recipe
+        Share a New Recipe
     </div>
+</div>
+
+<div class="ui main text container segment">
+    <form class="ui form" action="/recipes" method="POST">
+        <div class="field">
+            <input type="text" name="name" placeholder="name">
+        </div>
+        <div class="field">
+            <input type="text" name="image" placeholder="image url">
+        </div>
+        <div class="field">
+            <h3 id="ingredient">5 ingredients:</h3>
+            <h5 id="ingredient-note">(You do not need to add salt/pepper in your ingredients. You may include them in the short recipe field.)</h5>
+            <input id="ingredient-item" type="text" name="ingredient" placeholder="ingredient 1">
+            <input id="ingredient-item" type="text" name="ingredient" placeholder="ingredient 2">
+            <input id="ingredient-item" type="text" name="ingredient" placeholder="ingredient 3">
+            <input id="ingredient-item" type="text" name="ingredient" placeholder="ingredient 4">
+            <input id="ingredient-item" type="text" name="ingredient" placeholder="ingredient 5">
+        </div>
+        <div class="field">
+            <h3 id="ingredient">Short Recipe</h3>
+            <h5 id="ingredient-note">(Recipe must be less than 1000 characters.)</h5>
+            <textarea type="text" name="recipe">
+            </textarea>
+        </div>
+        <div>
+            <button id="ingredient-submit" class="ui basic yellow button" type="submit" href="/recipes">Submit</button>
+        </div>
+    </form>
 </div>

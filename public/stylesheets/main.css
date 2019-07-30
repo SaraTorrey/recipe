@@ -18,3 +18,18 @@ h4 {
 #header {
     text-align: center;
 }
+
+#ingredient {
+    margin: 0;
+    padding: 0;
+}
+
+#ingredient-note {
+    margin-top: 0.2em;
+    padding-bottom: 0.5em;
+}
+
+#ingredient-item {
+    margin: 0.2em;
+}
+

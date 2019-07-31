@@ -15,8 +15,8 @@
             <ul class="header item">
                 <% if(!currentUser){ %>
                     <div class="right menu">
-                        <a href="/blogs/login" class="item">Login</a>
-                        <a href="/blogs/register" class="item">Register</a>
+                        <a href="/login" class="item">Login</a>
+                        <a href="/register" class="item">Register</a>
                     </div>
                 <% } else { %>
                     <li><a href="#">Signed In As <%= currentUser.username %></a></li>

@@ -29,8 +29,16 @@
             <textarea type="text" name="recipe">
             </textarea>
         </div>
-        <div>
-            <button id="ingredient-submit" class="ui basic yellow button" type="submit" href="/recipes">Submit</button>
+        <div class="compact ui buttons">
+            <div>
+                <button id="ingredient-submit" class="ui yellow button" type="submit" href="/recipes">Submit</button>
+            </div>
+            <div></div>
+            <div>
+                <button id="ingredient-submit" class="ui olive button" type="back" href="/recipes">Back</button>
+            </div>
         </div>
     </form>
 </div>
+
+<% include ../partials/footer%>

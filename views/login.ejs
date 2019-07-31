@@ -1,0 +1,18 @@
+<% include ./partials/header%>
+
+<div id="new-post-container" class="ui main text container segment">
+    <h1 class="ui header">Login</h1>
+    <form class="ui form" action="/login" method="post">
+        <div class="field">
+            <label>Username</label>
+            <input type="text" name="username" placeholder="username">
+        </diV>
+        <div class="field">
+            <label>Password</label>
+            <input type="password" name="password" placeholder="password">
+        </div>
+            <input class="ui yellow button" type="submit" value="login">
+    </form>
+</div>
+
+<% include ./partials/footer%>

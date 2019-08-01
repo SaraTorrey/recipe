@@ -2,6 +2,16 @@ body {
     margin-top: 7em;
 }
 
+nav {
+    height: 0;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
 h1 {
     margin: 0.5em;
 }

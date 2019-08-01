@@ -1,5 +1,6 @@
 const   express = require("express");
-const   router  = express.Router();
+        router  = express.Router();
+        passport = require("passport");
         Recipe = require("../models/recipe");
 //      middleware = require("../middleware");
 
@@ -16,8 +17,8 @@ router.post("/login", passport.authenticate("local",
         console.log("haha");
 });
 
+//REGISTER
 router.get("/register", (req, res) => res.render("register"));
-
 router.post("/register", function (req, res) {
         let newUser = new User({username: req.body.username});
         User.register(newUser, req.body.password, function (err, user) {
@@ -31,5 +32,17 @@ router.post("/register", function (req, res) {
                 });
         });
 });
+
+
+router.get("/logout", function(req, res){
+        req.logout();
+        res.redirect("/recipes");
+});
+
+// router.get("/logout", function (req, res) {
+//         req.logOut();
+//         req.flash("success", "You have successfully logged out!");
+//         res.redirect("/recipes");
+// });
 
 module.exports = router;

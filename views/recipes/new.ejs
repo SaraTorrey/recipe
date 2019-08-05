@@ -1,4 +1,4 @@
-<% include ../partials/header%>
+<% include ../partials/header %>
 
 <div class="ui main text container segment">
     <div class="ui huge header">
@@ -14,19 +14,143 @@
         <div class="field">
             <input type="text" name="image" placeholder="image url">
         </div>
+
         <div class="field">
             <h3 id="ingredient">5 ingredients:</h3>
-            <h5 id="ingredient-note">(You do not need to add salt/pepper in your ingredients. You may include them in the short recipe field.)</h5>
-            <input id="ingredient-item" type="text" name="ingredient" placeholder="ingredient 1">
-            <input id="ingredient-item" type="text" name="ingredient" placeholder="ingredient 2">
-            <input id="ingredient-item" type="text" name="ingredient" placeholder="ingredient 3">
-            <input id="ingredient-item" type="text" name="ingredient" placeholder="ingredient 4">
-            <input id="ingredient-item" type="text" name="ingredient" placeholder="ingredient 5">
+            <h5 id="ingredient-note">(You do not need to add salt/pepper in your ingredients. You may include them in
+                the short recipe field.)</h5>
+            </table>
+            <table class="ui yellow table">
+                <thead>
+                <tr>
+                    <th>Ingredient</th>
+                    <th>Amount</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>
+                        <input id="ingredient-item" type="text" name="ingredient1" placeholder="ingredient 1">
+                    </th>
+                    <th>
+                        <div class="ui right labeled input">
+                            <input type="text" placeholder="Amount">
+                            <div class="ui dropdown label">
+                                <div class="text">Cups</div>
+                                <i class="dropdown icon"></i>
+                                <div class="menu">
+                                    <div class="item">tb</div>
+                                    <div class="item">ts</div>
+                                    <div class="item">lbs</div>
+                                    <div class="item">g</div>
+                                    <div class="item">kg</div>
+                                    <div class="item">ml</div>
+                                    <div class="item">l</div>
+                                </div>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <input id="ingredient-item" type="text" name="ingredient2" placeholder="ingredient 2">
+                    </th>
+                    <th>
+                        <div class="ui right labeled input">
+                            <input type="text" placeholder="Amount">
+                            <div class="ui dropdown label">
+                                <div class="text">Cups</div>
+                                <i class="dropdown icon"></i>
+                                <div class="menu">
+                                    <div class="item">tb</div>
+                                    <div class="item">ts</div>
+                                    <div class="item">lbs</div>
+                                    <div class="item">g</div>
+                                    <div class="item">kg</div>
+                                    <div class="item">ml</div>
+                                    <div class="item">l</div>
+                                </div>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <input id="ingredient-item" type="text" name="ingredient3" placeholder="ingredient 3">
+                    </th>
+                    <th>
+                        <div class="ui right labeled input">
+                            <input type="text" placeholder="Amount">
+                            <div class="ui dropdown label">
+                                <div class="text">Cups</div>
+                                <i class="dropdown icon"></i>
+                                <div class="menu">
+                                    <div class="item">tb</div>
+                                    <div class="item">ts</div>
+                                    <div class="item">lbs</div>
+                                    <div class="item">g</div>
+                                    <div class="item">kg</div>
+                                    <div class="item">ml</div>
+                                    <div class="item">l</div>
+                                </div>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <input id="ingredient-item" type="text" name="ingredient4" placeholder="ingredient 4">
+                    </th>
+                    <th>
+                        <div class="ui right labeled input">
+                            <input type="text" placeholder="Amount">
+                            <div class="ui dropdown label">
+                                <div class="text">Cups</div>
+                                <i class="dropdown icon"></i>
+                                <div class="menu">
+                                    <div class="item">tb</div>
+                                    <div class="item">ts</div>
+                                    <div class="item">lbs</div>
+                                    <div class="item">g</div>
+                                    <div class="item">kg</div>
+                                    <div class="item">ml</div>
+                                    <div class="item">l</div>
+                                </div>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <input id="ingredient-item" type="text" name="ingredient5" placeholder="ingredient 5">
+                    </th>
+                    <th>
+                        <div class="ui right labeled input">
+                            <input type="text" placeholder="Amount">
+                            <div class="ui dropdown label">
+                                <div class="text">Cups</div>
+                                <i class="dropdown icon"></i>
+                                <div class="menu">
+                                    <div class="item">tb</div>
+                                    <div class="item">ts</div>
+                                    <div class="item">lbs</div>
+                                    <div class="item">g</div>
+                                    <div class="item">kg</div>
+                                    <div class="item">ml</div>
+                                    <div class="item">l</div>
+                                </div>
+                            </div>
+                        </div>
+                    </th>
+                </tr>
+                </tbody>
+            </table>
+
         </div>
         <div class="field">
             <h3 id="ingredient">Short Recipe</h3>
             <h5 id="ingredient-note">(Recipe must be less than 1000 characters.)</h5>
-            <textarea type="text" name="recipe">
+            <textarea type="text" name="description">
             </textarea>
         </div>
         <div class="compact ui buttons">
@@ -41,4 +165,4 @@
     </form>
 </div>
 
-<% include ../partials/footer%>
+<% include ../partials/footer %>

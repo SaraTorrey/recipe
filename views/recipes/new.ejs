@@ -9,12 +9,10 @@
     });
 </script>
 
-
 <div class="ui main text container segment">
-    <div class="ui main text container segment">
-        <div class="ui huge header">
-            Share a New Recipe
-        </div>
+    <div class="ui huge header">
+        Share a New Recipe
+    </div>
 
     <form class="ui form" action="/recipes" method="POST">
         <div class="field">
@@ -44,7 +42,7 @@
                     <th>
 
                         <div class="ui right labeled input">
-                            <input type="text" placeholder="Amount">
+                            <input type="number" placeholder="Amount">
                             <div  id="hi" class="ui dropdown label">
                                 <div class="text">Cups</div>
                                 <i class="dropdown icon"></i>
@@ -67,7 +65,7 @@
                     </th>
                     <th>
                         <div class="ui right labeled input">
-                            <input type="text" placeholder="Amount">
+                            <input type="number" placeholder="Amount">
                             <div class="ui dropdown label">
                                 <div class="text">Cups</div>
                                 <i class="dropdown icon"></i>
@@ -90,7 +88,7 @@
                     </th>
                     <th>
                         <div class="ui right labeled input">
-                            <input type="text" placeholder="Amount">
+                            <input type="number" placeholder="Amount">
                             <div class="ui dropdown label">
                                 <div class="text">Cups</div>
                                 <i class="dropdown icon"></i>
@@ -113,7 +111,7 @@
                     </th>
                     <th>
                         <div class="ui right labeled input">
-                            <input type="text" placeholder="Amount">
+                            <input type="number" placeholder="Amount">
                             <div class="ui dropdown label">
                                 <div class="text">Cups</div>
                                 <i class="dropdown icon"></i>
@@ -136,7 +134,7 @@
                     </th>
                     <th>
                         <div class="ui right labeled input">
-                            <input type="text" placeholder="Amount">
+                            <input type="number" placeholder="Amount">
                             <div class="ui dropdown label">
                                 <div class="text">Cups</div>
                                 <i class="dropdown icon"></i>
@@ -160,7 +158,7 @@
         <div class="field">
             <h3 id="ingredient">Short Recipe</h3>
             <h5 id="ingredient-note">(Recipe must be less than 1000 characters.)</h5>
-            <textarea type="text" name="description">
+            <textarea type="text" name="description" maxlength="1000">
             </textarea>
         </div>
         <div class="compact ui buttons">
@@ -173,7 +171,6 @@
             </div>
         </div>
     </form>
-</div>
 </div>
 
 

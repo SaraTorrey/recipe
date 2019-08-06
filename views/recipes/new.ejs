@@ -1,12 +1,21 @@
 <% include ../partials/header %>
 
-<div class="ui main text container segment">
-    <div class="ui huge header">
-        Share a New Recipe
-    </div>
-</div>
+
+
+<script>
+    $(function() {
+        $('.ui.dropdown').dropdown();
+        // $('.ui.input').input();
+    });
+</script>
+
 
 <div class="ui main text container segment">
+    <div class="ui main text container segment">
+        <div class="ui huge header">
+            Share a New Recipe
+        </div>
+
     <form class="ui form" action="/recipes" method="POST">
         <div class="field">
             <input type="text" name="name" placeholder="name">
@@ -33,9 +42,10 @@
                         <input id="ingredient-item" type="text" name="ingredient1" placeholder="ingredient 1">
                     </th>
                     <th>
+
                         <div class="ui right labeled input">
                             <input type="text" placeholder="Amount">
-                            <div class="ui dropdown label">
+                            <div  id="hi" class="ui dropdown label">
                                 <div class="text">Cups</div>
                                 <i class="dropdown icon"></i>
                                 <div class="menu">
@@ -155,7 +165,7 @@
         </div>
         <div class="compact ui buttons">
             <div>
-                <button id="ingredient-submit" class="ui yellow button" type="submit" href="/recipes">Submit</button>
+                <button id="ingredient-submit" class="ui yellow button" type="submit">Submit</button>
             </div>
             <div></div>
             <div>
@@ -164,5 +174,7 @@
         </div>
     </form>
 </div>
+</div>
+
 
 <% include ../partials/footer %>

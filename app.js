@@ -7,12 +7,13 @@ const   express         = require("express"),
         LocalStrategy   = require("passport-local"),
         Recipe          = require("./models/recipe"),
         Comment         = require("./models/comment"),
-        User            = require("./models/user"),
-        seedDB          = require("./seeds");
+        User            = require("./models/user");
 
 const   commentRoutes   = require("./routes/comments");
         recipeRoutes    = require("./routes/recipes");
         indexRoutes     = require("./routes/index");
+
+const   jQuery = require('jquery');
 
 mongoose.connect( "mongodb://localhost:27017/restful_recipe", {useNewUrlParser: true} );
 

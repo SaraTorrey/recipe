@@ -8,8 +8,12 @@ router.get("/", (req, res) =>
         res.render("recipes/index", {recipes: allRecipes})
     }));
 
-//Create - add new recipe to DB
-router.post("/", middleware.isLoggedIn, function(req, res) {
+//New recipe form
+router.get("/new", function (req, res) {
+    res.render("recipes/new");
+});
+
+router.post("/new", middleware.isLoggedIn, function (req, res) {
     let name        = req.body.name;
     let image       = req.body.image;
     let ingredient1 = req.body.ingredient1;
@@ -42,6 +46,8 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
         }
     });
 });
+
+
 
 
 module.exports = router;

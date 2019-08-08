@@ -1,7 +1,8 @@
 const   express = require("express");
 const   router  = express.Router();
         Recipe = require("../models/recipe");
-        passport        = require("passport");
+        passport = require("passport");
+        User = require("../models/user");
         middleware = require("../middleware");
 
 router.get("/", (req, res) =>  res.render("landing"));
@@ -31,6 +32,12 @@ router.post("/register", function (req, res) {
                         res.redirect("/recipes");
                 });
         });
+});
+
+router.get("/logout", function (req, res) {
+    req.logOut();
+    req.flash("success", "Thank you for visiting!");
+    res.redirect("/recipes");
 });
 
 module.exports = router;

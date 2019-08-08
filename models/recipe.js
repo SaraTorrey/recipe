@@ -3,6 +3,16 @@ const mongoose = require("mongoose");
 let recipeSchema = new mongoose.Schema({
     name: String,
     image: String,
+    ingredient1 : String,
+    ingredient2 : String,
+    ingredient3 : String,
+    ingredient4 : String,
+    ingredient5 : String,
+    amount1 : Number,
+    amount2 : Number,
+    amount3 : Number,
+    amount4 : Number,
+    amount5 : Number,
     description: String,
     author: {
         id: {
@@ -18,4 +28,5 @@ let recipeSchema = new mongoose.Schema({
     ]
 });
 
+console.log('mapped it');
 module.exports = mongoose.model("Recipe", recipeSchema);

@@ -5,9 +5,12 @@ const   express         = require("express"),
         flash           = require("connect-flash"),
         passport        = require("passport"),
         LocalStrategy   = require("passport-local"),
-        Recipe          = require("./models/recipe"),
-        Comment         = require("./models/comment"),
+        methodOverride  = require("method-override");
+        Recipe          = require("./models/recipe");
+        Comment         = require("./models/comment");
         User            = require("./models/user");
+        seedDB          = require("./seeds");
+
 
 const   commentRoutes   = require("./routes/comments");
         recipeRoutes    = require("./routes/recipes");
@@ -15,12 +18,19 @@ const   commentRoutes   = require("./routes/comments");
 
 const   jQuery = require('jquery');
 
-mongoose.connect( "mongodb://localhost:27017/restful_recipe", {useNewUrlParser: true} );
+mongoose.connect( "mongodb://localhost:27017/restful_recipe", {
+        useNewUrlParser: true,
+        useCreateIndex: true,
+    }). then (() => {
+        console.log("Connected to DB!");
+    }).catch(err =>{
+        console.log("Error",err.message);
+});
 
-app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
-// app.use(methodOverride("_method"));
+app.use( bodyParser.urlencoded( {extended: true} ) );
+app.use(methodOverride("_method"));
 app.use(flash());
 
 // PASSPORT CONFIGURATION

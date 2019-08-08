@@ -25,7 +25,7 @@ middlewareObj.checkRecipeOwnership = function (req, res, next) {
     }
 };
 
-middlewareObj.checkCommentOWnership = function (req, res, next) {
+middlewareObj.checkCommentOwnership = function (req, res, next) {
     if (req.isAuthenticated()) {
         Recipe.findById(req.params.comment_id, function (err, foundComment) {
             if (err) {
@@ -45,11 +45,11 @@ middlewareObj.checkCommentOWnership = function (req, res, next) {
 };
 
 middlewareObj.isLoggedIn = function (req, res, next) {
-    if (req.isAuthenticated()){
-        return(next);
+    if (req.isAuthenticated()) {
+        return next();
     }
-    req.flash("error", "Please Login First!");
-    req.flash("/login");
+    req.flash("error", "Please login first!");
+    res.redirect("/login");
 };
 
 module.exports = middlewareObj;

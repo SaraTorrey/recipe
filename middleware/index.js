@@ -1,9 +1,9 @@
 let Recipe = require("../models/recipe"),
     Comment = require("../models/comment");
 
-let middlewareObj ={};
+let middlewareObj = {};
 
-middlewareObj.checkRecipeOwnership = function (req, res, next) {
+middlewareObj.checkRecipeOwnership = (req, res, next) => {
     if (req.isAuthenticated()) {
         Recipe.findById(req.params.id, function (err, foundRecipe) {
             if (err) {
@@ -20,22 +20,22 @@ middlewareObj.checkRecipeOwnership = function (req, res, next) {
             }
         });
     } else {
-        req.flash("error", "Login First!");
+        req.flash("error", "Please Login First!");
         res.redirect("back");
     }
 };
 
 middlewareObj.checkCommentOwnership = function (req, res, next) {
     if (req.isAuthenticated()) {
-        Recipe.findById(req.params.comment_id, function (err, foundComment) {
+        Comment.findById(req.params.comment_id, (err, foundComment) => {
             if (err) {
-                req.redirect("back");
+                res.redirect("back");
             } else {
                 if (foundComment.author.id.equals(req.user._id)) {
                     next();
                 } else {
                     req.flash("error", "Permission Denied!");
-                    req.redirect("back");
+                    res.redirect("back");
                 }
             }
         });
@@ -44,7 +44,7 @@ middlewareObj.checkCommentOwnership = function (req, res, next) {
     }
 };
 
-middlewareObj.isLoggedIn = function (req, res, next) {
+middlewareObj.isLoggedIn = (req, res, next) => {
     if (req.isAuthenticated()) {
         return next();
     }

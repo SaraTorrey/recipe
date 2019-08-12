@@ -1,12 +1,12 @@
 const   express = require("express"),
-        router  = express.Router(),
+        router  = express.Router({mergeParams: true}),
         Recipe = require("../models/recipe"),
         middleware = require("../middleware");
 
 //INDEX - display all recipes
-router.get("/", function(req, res){
+router.get("/", (req, res) => {
     // Get all recipes from DB
-    Recipe.find({}, function(err, allRecipes){
+    Recipe.find({}, (err, allRecipes) => {
         if(err){
             console.log(err);
         } else {
@@ -16,20 +16,29 @@ router.get("/", function(req, res){
 });
 
 //CREATE - a NEW Recipe
-router.post("/", middleware.isLoggedIn, function (req, res) {
-    let recipe = newRecipe;
+
+router.post("/", middleware.isLoggedIn, (req, res) => {
+
     let name = req.body.name;
     let image = req.body.image;
+
     let ingredient1 = req.body.ingredient1;
     let ingredient2 = req.body.ingredient2;
     let ingredient3 = req.body.ingredient3;
     let ingredient4 = req.body.ingredient4;
     let ingredient5 = req.body.ingredient5;
     let description = req.body.description;
+    let amount1 = req.body.amount1;
+    let amount2 = req.body.amount2;
+    let amount3 = req.body.amount3;
+    let amount4 = req.body.amount4;
+    let amount5 = req.body.amount5;
+
     let author = {
         id: req.user._id,
         username: req.user.username
     };
+
     let newRecipe = {
         name:           name,
         image:          image,
@@ -44,15 +53,15 @@ router.post("/", middleware.isLoggedIn, function (req, res) {
         amount4:        amount4,
         amount5:        amount5,
         description:    description,
-
+        author:         author
     };
-    Recipe.create(newRecipe, function (err, newlyCreated) {
+    Recipe.create(newRecipe, (err, newlyCreated) => {
         if(err){
             console.log(err);
         } else {
             //redirect back to Recipes page
             console.log(newlyCreated);
-            res.render("recipes/show");
+            res.redirect("recipes");
         }
     });
  });
@@ -65,16 +74,45 @@ router.get("/new", middleware.isLoggedIn, function (req, res) {
 //SHOW - more info about each recipe
 router.get("/:id", function (req, res) {
     //find recipe with given id
-    Recipe.findById(req.params.id).populate("comments").exec(function (err, foundRecipe) {
+    Recipe.findById(req.params.id).populate("comments").exec((err, foundRecipe) => {
         if (err) {
             console.log(err);
         } else {
             console.log(foundRecipe);
+            //render show template with that recipe
             res.render("recipes/show", {recipe: foundRecipe});
         }
     });
 });
 
+//EDIT recipe
+router.get("/:id/edit", middleware.checkRecipeOwnership, (req, res) => {
+    Recipe.findById(req.params.id, (err, foundRecipe) => {
+        res.render("recipes/edit", {foundRecipe});
+    });
+});
+
+//UPDATE recipe
+router.put("/:id", middleware.checkRecipeOwnership, (req, res) => {
+    Recipe.findByIdAndUpdate(req.params.id, req.body.recipe, (err, updatedRecipe) => {
+        if (err) {
+            res.redirect("/recipes");
+        } else {
+            res.redirect("/recipes/" + req.params.id, {updatedRecipe});
+        }
+    });
+});
+
+//DELETE recipe
+router.delete(":/id", middleware.checkRecipeOwnership, (req, res) => {
+    Recipe.findByIdAndRemove(req.params.id, (err) => {
+        if (err) {
+            res.redirect("/recipes");
+        } else {
+            res.redirect("recipes");
+        }
+    });
+});
 
 
 module.exports = router;

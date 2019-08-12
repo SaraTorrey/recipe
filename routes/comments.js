@@ -22,49 +22,50 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
     //find recipe using id
     Recipe.findById(req.params.id, function (err, recipe) {
         if (err) {
-            req.flash("error", "Not Found!");
-            req.redirect("/recipes");
+            console.log(err);
+            res.redirect("/recipes");
         } else {
             Comment.create(req.body.comment, (err, comment) => {
                 if (err) {
+                    req.flash("error", "Not Found!");
                     console.log(err);
                 } else {
                     //add username & id to comment
-                    recipe.author.id = req.user._id;
-                    recipe.author.username = req.user.username;
+                    comment.author.id = req.user._id;
+                    comment.author.username = req.user.username;
                     //save comment
                     comment.save();
                     recipe.comments.push(comment);
                     recipe.save();
                     console.log(comment);
                     req.flash("success", "Your comment has been successfully created.");
-                    req.redirect("/recipes/" + recipe._id);
+                    res.redirect("/recipes/" + recipe._id);
                 }
-            })
+            });
         }
-    })
+    });
 });
 
 //EDIT comments
 router.get("/:comment_id/edit", middleware.checkCommentOwnership, (req, res) => {
-    Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, (err, foundComment) => {
+    Comment.findById(req.params.comment_id,(err, foundComment) => {
         if (err) {
             res.redirect("back");
         } else {
-            res.redirect("/recipes/edit" + {recipe_id: req.params.id, comment: foundComment});
+            res.render("/recipes/edit" + {recipe_id: req.params.id, comment: foundComment});
         }
     })
 });
 
 //UPDATE comment
-router.get("/:comment_id", middleware.checkCommentOwnership, function (req, res) {
+router.put("/:comment_id", middleware.checkCommentOwnership, function (req, res) {
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, (err, updatedComment) => {
         if (err) {
             res.redirect("back");
         } else {
             res.redirect("/recipes/" + {comment_id: req.params.id, comment: updatedComment});
         }
-    })
+    });
 });
 
 // DELETE comment
@@ -76,7 +77,7 @@ router.delete("/:comment_id", middleware.checkCommentOwnership, (req, res) => {
             req.flash("success", "Comment Deleted!");
             res.redirect("/recipes/" + req.params.id);
         }
-    })
+    });
 });
 
 module.exports = router;

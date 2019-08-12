@@ -10,4 +10,18 @@
     </header>
 </div>
 
+<div class="ui container">
+    <% recipes.forEach(function (recipe) { %>
+        <div class="container item">
+            <img src="<%= recipe.image %>">
+            <div class="item">
+                <h3><%= recipe.name %></h3>
+            </div>
+            <p>
+                <a href="/recipes/<%= recipe._id %>" class="button">More Info</a>
+            </p>
+        </div>
+    <% })%>
+</div>
+
 <% include ../partials/footer%>

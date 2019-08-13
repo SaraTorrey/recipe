@@ -5,23 +5,24 @@
         <div id="header">
             <h1>Welcome to Recipe 5.0</h1>
             <h4>5 Ingredient Recipes for Busy Homes</h4>
-            <a class="ui yellow basic button" href="/recipes/new">Add a New Recipe</a>
+            <a class="ui green button" href="/recipes/new">Add a New Recipe</a>
         </div>
     </header>
-</div>
+    <hr>
 
-<div class="ui container">
-    <% recipes.forEach(function (recipe) { %>
-        <div class="container item">
-            <img src="<%= recipe.image %>">
-            <div class="item">
-                <h3><%= recipe.name %></h3>
+    <div class="ui container">
+        <% recipes.forEach(function (recipe) { %>
+            <div class="container item">
+                <img src="<%= recipe.image %>">
+                <div class="item">
+                    <h3><strong><%= recipe.name %></strong></h3>
+                </div>
+                <p>
+                    <a href="/recipes/<%= recipe._id %>" class="ui green basic button">More Info</a>
+                </p>
+                <hr>
             </div>
-            <p>
-                <a href="/recipes/<%= recipe._id %>" class="button">More Info</a>
-            </p>
-        </div>
-    <% })%>
+        <% })%>
+    </div>
 </div>
-
 <% include ../partials/footer%>

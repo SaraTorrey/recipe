@@ -25,20 +25,22 @@
                             <% } %>
                         </div>
                         </div>
-                <% if(error && error.length > 0){%>
-                <div class="ui container">
-                    <div class="alert alert-danger" role="alert">
-                        <%= error %>
-                    </div>
-                    <% } %>
-                    <% if(success && success.length > 0){%>
-                        <div class="button" role="alert">
-                            <%= success %>
-                        </div>
-                    <% } %>
                 </div>
             </div>
         </div>
     </div>
 
+    <div class="ui container">
+        <% if(error && error.length > 0){%>
+        <div class="ui container">
+            <div class="" role="alert">
+                <%= error %>
+            </div>
+            <% } %>
+            <% if(success && success.length > 0){%>
+                <div class="" role="alert">
+                    <%= success %>
+                </div>
+            <% } %>
+        </div>
 

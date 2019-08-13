@@ -5,18 +5,16 @@ const   express         = require("express"),
         flash           = require("connect-flash"),
         passport        = require("passport"),
         LocalStrategy   = require("passport-local"),
-        methodOverride  = require("method-override");
-        Recipe          = require("./models/recipe");
-        Comment         = require("./models/comment");
-        User            = require("./models/user");
-        seedDB          = require("./seeds");
-
+        methodOverride  = require("method-override"),
+        Recipe          = require("./models/recipe"),
+        Comment         = require("./models/comment"),
+        User            = require("./models/user"),
+        seedDB          = require("./seeds"),
+        jQuery = require('jquery');
 
 const   commentRoutes   = require("./routes/comments");
         recipeRoutes    = require("./routes/recipes");
         indexRoutes     = require("./routes/index");
-
-const   jQuery = require('jquery');
 
 mongoose.connect( "mongodb://localhost:27017/restful_recipe", {
         useNewUrlParser: true,

@@ -22,7 +22,7 @@ router.post("/", middleware.isLoggedIn, (req, res) => {
     //find recipe using id
     Recipe.findById(req.params.id, function (err, recipe) {
         if (err) {
-            console.log(err);
+            req.flash("error", "Something went wrong!");
             res.redirect("/recipes");
         } else {
             Comment.create(req.body.comment, (err, comment) => {

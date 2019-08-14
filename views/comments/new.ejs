@@ -1,0 +1,20 @@
+<% include ../partials/header %>
+
+<div class="ui container">
+    <div class="ui segment">
+        <h1>Add a new comment to <%= recipe.name %></h1>
+        <div>
+            <form class="ui form" action="/recipes/<%= recipe._id%>/comments" method="POST">
+                <div class="fields">
+                    <input class="fields" type="text" name="comment[text]" placeholder="text">
+                </div>
+                <div class="fields">
+                    <button class="ui basic green button">Submit</button>
+                    <a class="ui basic olive button" href="/recipes">Back</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

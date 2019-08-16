@@ -1,80 +1,85 @@
-<% include ../partials/header%>
+<% include ../partials/header %>
 
 
 <div class="ui raised very padded text container segment">
 
     <div class="ui segment">
 
-        <img class="ui rounded left floated image" src="<%=recipe.image%>"/>
-           <div class="ui header">
-                <h1>
-                    <a id="recipe-name"><%= recipe.name%></a>
-                </h1>
+        <img class="ui rounded left floated image" src="<%= recipe.image %>"/>
+        <div class="ui header">
+            <h1>
+                <a id="recipe-name"><%= recipe.name %></a>
+            </h1>
 
-                <h4 class="ui header">
-                    <em>Submitted By <%= recipe.author.username %></em>
-                </h4>
-           </div>
+            <h4 class="ui header">
+                <em>Submitted By <%= recipe.author.username %></em>
+            </h4>
+        </div>
 
         <table class="ui yellow table">
             <tbody>
-                <tr>
-                    <th>Ingredients</th>
-                    <td data-label="Ingredients"><%=recipe.ingredient1%></td>
-                    <td data-label="Ingredients"><%=recipe.ingredient2%></td>
-                    <td data-label="Ingredients"><%=recipe.ingredient3%></td>
-                    <td data-label="Ingredients"><%=recipe.ingredient4%></td>
-                    <td data-label="Ingredients"><%=recipe.ingredient5%></td>
-                </tr>
-                <tr>
-                    <th>Amount</th>
-                    <td data-label="Amount"><%=recipe.amount1%></td>
-                    <td data-label="Amount"><%=recipe.amount2%></td>
-                    <td data-label="Amount"><%=recipe.amount3%></td>
-                    <td data-label="Amount"><%=recipe.amount4%></td>
-                    <td data-label="Amount"><%=recipe.amount5%></td>
-                </tr>
+            <tr>
+                <th>Ingredients</th>
+                <td data-label="Ingredients"><%= recipe.ingredient1 %></td>
+                <td data-label="Ingredients"><%= recipe.ingredient2 %></td>
+                <td data-label="Ingredients"><%= recipe.ingredient3 %></td>
+                <td data-label="Ingredients"><%= recipe.ingredient4 %></td>
+                <td data-label="Ingredients"><%= recipe.ingredient5 %></td>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <td data-label="Amount"><%= recipe.amount1 %></td>
+                <td data-label="Amount"><%= recipe.amount2 %></td>
+                <td data-label="Amount"><%= recipe.amount3 %></td>
+                <td data-label="Amount"><%= recipe.amount4 %></td>
+                <td data-label="Amount"><%= recipe.amount5 %></td>
+            </tr>
             </tbody>
         </table>
         <div class="ui segment">
             <h1 class="ui header">Instructions</h1>
-            <p class=""><%= recipe.description%></p>
+            <p class=""><%= recipe.description %></p>
         </div>
         <div class="ui buttons">
-        <% if(currentUser && recipe.author.id.equals(currentUser._id)){ %>
-            <a class="ui left green basic button" href="/recipes/<%= recipe._id %>/edit">Edit Recipe</a>
-            <div class="or"></div>
-            <button action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" class="ui right red basic button">Delete Recipe</button>
-        <% }%>
+            <% if(currentUser && recipe.author.id.equals(currentUser._id)){ %>
+                <a class="ui left green basic button" href="/recipes/<%= recipe._id %>/edit">Edit Recipe</a>
+                <div class="or"></div>
+                <button action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST"
+                        class="ui right red basic button">Delete Recipe
+                </button>
+            <% } %>
         </div>
     </div>
 
 
-        <div class="ui segment">
-            <a class="fluid ui yellow button" href="/recipes/<%= recipe._id%>/comments/new">Add Comment</a>
+    <div class="ui segment">
+        <a class="fluid ui yellow button" href="/recipes/<%= recipe._id %>/comments/new">Add Comment</a>
 
-
-
-            <% recipe.comments.forEach(function (comment) { %>
-                <div class="ui hidden divider"></div>
-             <div class="segment">
+        <% recipe.comments.forEach(function (comment) { %>
+            <div class="ui hidden divider"></div>
+            <div class="segment">
                 <strong class="ui float right"><%= comment.author.username %></strong>
                 <span class="item right"><%= recipe.date %></span>
                 <p>
                     <%= comment.text %>
                 </p>
-                 <div class="ui buttons">
-                     <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
-                     <a class="ui button basic green"
-                        href="/recipes/<%=recipe._id %>/comments/<%=comment._id %>/edit">Edit Comment</a>
-                     <div class="or"></div>
-                     <button type="submit" action="/recipes/<%=recipe._id %>/comments/<%=comment._id %>?_method=DELETE" method="POST"class="ui button basic red" value="Delete">Delete Comment</button>
-                 </div>
-                 <% } %>
             </div>
-            <% }) %>
-        </div>
+
+            <div class="ui buttons">
+                <% if(currentUser && recipe.author.id.equals(currentUser._id)){ %>
+                <a class="ui left green basic button"
+                   href="/recipes/<%= recipe._id %>/comments/<%= comment._id %>/edit">Edit Comment</a>
+                <div class="or"></div>
+                <form action="/recipes/<%= recipe._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                    <input type="submit" class="ui red basic button" value="Delete">
+                </form>
+                <% } %>
+            </div>
+
+        <% }) %>
+
+    </div>
 
 </div>
 
-<%include ../partials/footer%>
+<% include ../partials/footer %>

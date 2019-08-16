@@ -9,8 +9,8 @@ const   express         = require("express"),
         Recipe          = require("./models/recipe"),
         Comment         = require("./models/comment"),
         User            = require("./models/user"),
-        seedDB          = require("./seeds"),
-        jQuery = require('jquery');
+        // seedDB          = require("./seeds"),
+        jQuery          = require('jquery');
 
 const   commentRoutes   = require("./routes/comments");
         recipeRoutes    = require("./routes/recipes");
@@ -30,7 +30,7 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
-seedDB();
+// seedDB();
 
 // PASSPORT CONFIGURATION
 app.use(require("express-session")({
@@ -57,5 +57,5 @@ app.use("/recipes", recipeRoutes);
 app.use("/recipes/:id/comments", commentRoutes);
 
 app.listen( 3000, process.env.IP, function () {
-    console.log( "Recipe has started!" );
+    console.log( "Restful_recipe has started!" );
 } );
